@@ -1,0 +1,8 @@
+### CSS files (compiled from LESS) ###
+css/
+
+### js files (combined from sources) ###
+js/
+
+### View files (compiled from JADE) ###
+views/
