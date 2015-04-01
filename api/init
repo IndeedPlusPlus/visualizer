@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+echo 'Creating local config files.' . PHP_EOL;
+$emptyArrayCreator = <<<EOF
+<?php
+return [];
+
+EOF;
+$configItems = ['db', 'console', 'params', 'web'];
+$pathFormat = './config/%s.local.php';
+foreach ($configItems as $item) {
+    $path = sprintf($pathFormat, $item);
+    if (file_exists($path)) {
+        echo $path, ' already exists.' . PHP_EOL;
+    } else {
+        echo 'writing ' . $path . PHP_EOL;
+        file_put_contents($path, $emptyArrayCreator);
+    }
+}
