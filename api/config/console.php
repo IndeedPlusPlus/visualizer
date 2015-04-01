@@ -5,7 +5,7 @@ Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
 $params = require(__DIR__ . '/params.php');
 $db = require(__DIR__ . '/db.php');
 
-return [
+return \yii\helpers\ArrayHelper::merge([
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'gii'],
@@ -28,4 +28,6 @@ return [
         'db' => $db,
     ],
     'params' => $params,
-];
+],
+    include('console.local.php')
+);
