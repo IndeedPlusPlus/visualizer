@@ -90,7 +90,7 @@ App.controller('AppController',
       // list of available languages
       available: {
         'en':       'English',
-        'zh_CN':    'Simplified Chinese'
+        'es_AR':    'Español'
       },
       // display always the current ui language
       init: function () {

@@ -56,6 +56,21 @@ App.directive('sidebar', ['$rootScope', '$window', 'Utils', function($rootScope,
         $rootScope.$broadcast('closeSidebarMenu');
       });
 
+      // Allows to close
+      if ( angular.isDefined(attrs.sidebarAnyclickClose) ) {
+
+        $('.wrapper').on('click.sidebar', function(e){
+          // don't check if sidebar not visible
+          if( ! $body.hasClass('aside-toggled')) return;
+
+          // if not child of sidebar
+          if( ! $(e.target).parents('.aside').length ) {
+            $body.removeClass('aside-toggled');          
+          }
+
+        });
+      }
+
     }
   };
 

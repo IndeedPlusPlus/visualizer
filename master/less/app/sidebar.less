@@ -142,6 +142,12 @@
       &:focus, &:hover {
         color: @sidebar-item-color-active;
       }
+      // submenu icons
+      > em {
+        display: inline-block;
+        width: 2em;
+        margin: 0 0 0 -2em;
+      }
     }
 
     &.active {
@@ -180,6 +186,10 @@
     // reduce padding when item is on sidebar collapsed
     li > a {
       padding-left: 20px;
+      // submenu icons
+      em {
+        margin-left: 0;
+      }
     }
   }
 }

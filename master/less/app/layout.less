@@ -51,8 +51,6 @@ html, body {
   height: auto;
   min-height: 100%;
   overflow-x: hidden;
-  // padding-bottom: @footer-hg !important; // ensure a space for the footer
-  // .transition(all .3s cubic-bezier(.23,1,.32,1));
   &.ng-leave {
     display: none;
   }
@@ -99,7 +97,7 @@ html, body {
     height: 100%;
     margin-left: 0;
     // overflow: hidden;
-    // z-index: @z-index-main-section;
+    z-index: @z-index-main-section;
     background-color: @content-bg;
     margin-bottom: @footer-hg !important; // ensure a space for the footer
   }
@@ -119,7 +117,9 @@ html, body {
     }
   }
 }
-
+.modal-open .wrapper {
+  z-index: 0;
+}
 
 // Page main content
 // -----------------------------
@@ -139,7 +139,8 @@ html, body {
 
   > h3,
   > .content-heading {
-    .h3;
+    font-size: @font-size-h3;
+    line-height: @headings-line-height;
     color: #929292;
     margin: -15px;
     margin-bottom: 20px;

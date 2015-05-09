@@ -6,26 +6,26 @@
 
 var myApp = angular.module('myAppName', ['angle']);
 
-myApp.run(function($log) {
+myApp.run(["$log", function($log) {
 
   $log.log('I\'m a line from custom.js');
 
-});
+}]);
 
-myApp.config(function(RouteHelpersProvider) {
+myApp.config(["RouteHelpersProvider", function(RouteHelpersProvider) {
 
   // Custom Route definition
   
-});
+}]);
 
-myApp.controller('oneOfMyOwnController', function($scope) {
+myApp.controller('oneOfMyOwnController', ["$scope", function($scope) {
   /* controller code */
-});
+}]);
 
 myApp.directive('oneOfMyOwnDirectives', function() {
   /*directive code*/
 });
 
-myApp.config(function($stateProvider /* ... */) {
+myApp.config(["$stateProvider", function($stateProvider /* ... */) {
   /* specific routes here (see file config.js) */
-});
+}]);
