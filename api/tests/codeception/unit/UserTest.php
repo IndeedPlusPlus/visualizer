@@ -10,7 +10,6 @@ namespace app\tests\codeception\unit;
 
 
 use app\models\User;
-
 use app\tests\codeception\unit\fixtures\UserFixture;
 use yii\codeception\TestCase;
 
@@ -31,6 +30,7 @@ class UserTest extends TestCase
         $user->password_hash = \Yii::$app->security->generatePasswordHash('test');
         $this->assertTrue($user->save());
         $this->assertNotNull(User::findOne(['name' => 'test']));
+        $this->assertNotEmpty($user->db_password);
     }
 
     public function testDelete()
@@ -38,5 +38,12 @@ class UserTest extends TestCase
         $this->assertNotNull($user = User::findOne(['name' => 'adam']));
         $user->delete();
         $this->assertNull(User::findOne(['name' => 'adam']));
+    }
+
+    public function testDbPassword()
+    {
+        $user = User::findOne(['name' => $this->users['user1']['name']]);
+        $this->assertNotNull($user);
+        $this->assertEquals($this->users['user1']['db_password'], $user->db_password);
     }
 }
