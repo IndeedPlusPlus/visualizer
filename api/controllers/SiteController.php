@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\components\JSONController;
+use app\components\SidebarBuilder;
 use app\models\User;
 use app\models\UserLoginForm;
 use Yii;
@@ -11,6 +12,11 @@ use yii\web\ForbiddenHttpException;
 
 class SiteController extends JSONController
 {
+    public function actionIndex()
+    {
+        return ['guest' => \Yii::$app->user->isGuest, 'time' => time(), 'user' => \Yii::$app->user->isGuest ? null : \Yii::$app->user->identity->name];
+    }
+
     public function actionStatus()
     {
         define('DB_PREFIX', \Yii::$app->params['databasePrefix']);
@@ -40,5 +46,20 @@ class SiteController extends JSONController
             return ['status' => 'bypass'];
         }
         throw new ForbiddenHttpException();
+    }
+
+    public function actionSidebar()
+    {
+        $builder = new SidebarBuilder();
+        $builder->pushHeader();
+        if (!Yii::$app->user->isGuest) {
+
+        }
+        return $builder->toArray();
+    }
+
+    public function actionError()
+    {
+        return [];
     }
 }
