@@ -3,6 +3,7 @@
 namespace app\models;
 
 
+use yii\base\Exception;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
@@ -66,5 +67,26 @@ class User extends ActiveRecord implements IdentityInterface
     public function validateAuthKey($authKey)
     {
         // TODO: Implement validateAuthKey() method.
+    }
+
+    /**
+     * @return array
+     * @throws Exception
+     */
+    public function getDatabases()
+    {
+        $dbUser = \Yii::$app->params['databasePrefix'] . $this->name;
+        $mysqli = new \mysqli('localhost', $dbUser, $this->db_password);
+        $prefix = $dbUser . '_';
+        $result = $mysqli->query('SHOW DATABASES LIKE \'' . $prefix . '%\'');
+        if ($result === false) {
+            throw new Exception($mysqli->error);
+        }
+        $ret = [];
+        while ($row = $result->fetch_row()) {
+            $dbName = $row[0];
+            $ret[] = [substr($dbName, strlen($prefix)) => $dbName];
+        }
+        return $ret;
     }
 }
