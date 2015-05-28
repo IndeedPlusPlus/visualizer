@@ -11,14 +11,21 @@
     "translate": "sidebar.nav.SINGLEVIEW"
   },
   {
+    "text": "Administration",
+    "sref": "app.administration",
+    "icon": "fa fa-gears",
+    "translate": "sidebar.nav.ADMINISTRATION"
+  },
+  {
     "text": "Menu",
     "sref": "#",
     "icon": "icon-folder",
     "submenu": [
-      { "text": "Sub Menu", 
-        "sref": "app.submenu", 
-        "translate": "sidebar.nav.menu.SUBMENU" 
-      }    
+      {
+        "text": "Sub Menu",
+        "sref": "app.submenu",
+        "translate": "sidebar.nav.menu.SUBMENU"
+      }
     ],
     "translate": "sidebar.nav.menu.MENU"
   }

@@ -14,9 +14,9 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
   // default route
   $urlRouterProvider.otherwise('/app/singleview');
 
-  // 
+  //
   // Application Routes
-  // -----------------------------------   
+  // -----------------------------------
   $stateProvider
     .state('app', {
         url: '/app',
@@ -35,12 +35,17 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
         title: 'Submenu',
         templateUrl: helper.basepath('submenu.html')
     })
-    // 
+      .state('app.administration' , {
+        url: '/pma',
+          title: 'Administration',
+          templateUrl: helper.basepath('administration.html')
+      })
+    //
     // CUSTOM RESOLVES
     //   Add your own resolves properties
     //   following this object extend
     //   method
-    // ----------------------------------- 
+    // -----------------------------------
     // .state('app.someroute', {
     //   url: '/some_url',
     //   templateUrl: 'path_to_template.html',
