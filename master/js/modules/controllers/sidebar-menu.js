@@ -41,8 +41,8 @@ App.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
 
     $scope.loadSidebarMenu = function() {
 
-      var menuJson = 'server/sidebar-menu.json',
-          menuURL  = menuJson + '?v=' + (new Date().getTime()); // jumps cache
+      var menuJson = 'api/web/index.php?r=site/sidebar',
+          menuURL  = menuJson + (menuJson.indexOf('?') == -1 ? '&v=' : '&v=') + (new Date().getTime()); // jumps cache
       $http.get(menuURL)
         .success(function(items) {
            $scope.menuItems = items;

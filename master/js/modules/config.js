@@ -40,6 +40,11 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
           title: 'Administration',
           templateUrl: helper.basepath('administration.html')
       })
+      .state('app.dbview' , {
+          url: '/db-view/:name',
+          title: 'Database View',
+          templateUrl: helper.basepath('dbview.html')
+      })
     //
     // CUSTOM RESOLVES
     //   Add your own resolves properties
