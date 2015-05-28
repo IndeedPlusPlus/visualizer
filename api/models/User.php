@@ -85,7 +85,7 @@ class User extends ActiveRecord implements IdentityInterface
         $ret = [];
         while ($row = $result->fetch_row()) {
             $dbName = $row[0];
-            $ret[] = [substr($dbName, strlen($prefix)) => $dbName];
+            $ret[substr($dbName, strlen($prefix))] = $dbName;
         }
         return $ret;
     }

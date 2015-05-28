@@ -43,7 +43,8 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
       .state('app.dbview' , {
           url: '/db-view/:name',
           title: 'Database View',
-          templateUrl: helper.basepath('dbview.html')
+          templateUrl: helper.basepath('dbview.html'),
+          controller: 'DatabaseViewController'
       })
     //
     // CUSTOM RESOLVES

@@ -36,6 +36,7 @@ class SidebarBuilder
         if ($translate)
             $item['translate'] = $translate;
         $item['submenu'] = $submenu;
+        $this->sidebar[] = $item;
     }
 
     public function pushHeader()

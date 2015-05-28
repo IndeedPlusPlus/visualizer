@@ -53,7 +53,19 @@ class SiteController extends JSONController
         $builder = new SidebarBuilder();
         $builder->pushHeader();
         if (!Yii::$app->user->isGuest) {
-
+            $submenu = [];
+            $databases = Yii::$app->user->identity->getDatabases();
+            foreach($databases as $name => $dbName)
+            {
+                $submenu[] = [
+                    'text' => $name,
+                    'sref' => 'app.dbview',
+                    'params' => [
+                        'name' => $name
+                    ]
+                ];
+            }
+            $builder->pushMenu('Databases', null , 'fa' , null , $submenu);
         }
         return $builder->toArray();
     }
