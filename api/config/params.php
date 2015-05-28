@@ -2,8 +2,10 @@
 
 return \yii\helpers\ArrayHelper::merge([
     'adminEmail' => 'admin@example.com',
-    'databasePrefix' => 'v_'
-    ] ,
+    'databasePrefix' => 'v_',
+    'pmaSessionName' => 'PMA_SESSION',
+    'pmaURL' => '/pma/',
+],
     include('params.local.php')
 );
 
