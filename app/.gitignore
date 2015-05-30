@@ -6,3 +6,7 @@ js/
 
 ### View files (compiled from JADE) ###
 views/
+
+### Pages (compiled from JADE) ###
+pages/
+
