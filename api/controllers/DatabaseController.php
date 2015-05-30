@@ -80,8 +80,12 @@ class DatabaseController extends JSONController
     public function actionView($name)
     {
         $dbName = $this->dbUser . '_' . $name;
-        $mysqli = new mysqli('localhost', $this->dbUser, $this->user->db_password, $dbName);
-
+        $mysqli = new mysqli('localhost', $this->dbUser, $this->user->db_password);
+        if (!$mysqli->select_db($dbName))
+        {
+            \Yii::$app->response->statusCode = 404;
+            return ['status' => 'error' , 'error' => 'Database not found.'];
+        }
         $ret = $mysqli->query('SHOW TABLE STATUS');
         if ($ret) {
             $tables = $ret->fetch_all(MYSQL_ASSOC);
