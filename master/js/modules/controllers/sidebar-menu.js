@@ -28,12 +28,15 @@ App.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
                 return foundActive;
             }
             else {
+                /*
                 console.log('---');
                 console.log(item.sref);
                 console.log(item.params);
                 console.log($state.params);
+                */
                 var ret = ( $state.is(item.sref) || $state.includes(item.sref) ) && item.params == undefined || angular.equals($state.params, item.params);
-                console.log('isActive = ' + ret);
+                //console.log('isActive = ' + ret);
+                return ret;
             }
         };
 

@@ -52,6 +52,19 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
           templateUrl: helper.basepath('dbcreate.html'),
           controller: 'DatabaseCreateController'
       })
+      .state('page', {
+          url: '/page',
+          templateUrl: 'app/pages/page.html',
+          resolve: helper.resolveFor('modernizr', 'icons'),
+          controller: ["$rootScope", function($rootScope) {
+              $rootScope.app.layout.isBoxed = false;
+          }]
+      })
+      .state('page.login', {
+          url: '/login',
+          title: "Login",
+          templateUrl: 'app/pages/login.html'
+      })
     //
     // CUSTOM RESOLVES
     //   Add your own resolves properties
