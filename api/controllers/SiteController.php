@@ -8,6 +8,7 @@ use app\models\User;
 use app\models\UserLoginForm;
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\ForbiddenHttpException;
 
 class SiteController extends JSONController
@@ -29,11 +30,19 @@ class SiteController extends JSONController
     public function actionLogin()
     {
         $form = new UserLoginForm();
-        $form->username = Yii::$app->request->post('username');
-        $form->password = Yii::$app->request->post('password');
+
+        $data = Json::decode(file_get_contents('php://input'));
+        if (isset($data['username']))
+            $form->username = $data['username'];
+        if (isset($data['password']))
+            $form->password = $data['password'];
+        if (isset($data['remember_me']))
+            $form->remember_me = $data['remember_me'];
+
         if ($form->login()) {
-            return ['status' => 'ok', 'username' => $form->getUser()->name];
+            return ['status' => 'ok', 'username' => $form->getUser()->name ];
         } else {
+            Yii::$app->response->statusCode = 403;
             return ['status' => 'error', 'errors' => $form->getErrors()];
         }
     }
