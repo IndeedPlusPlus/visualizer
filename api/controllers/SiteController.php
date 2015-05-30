@@ -75,6 +75,8 @@ class SiteController extends JSONController
                 ];
             }
             $builder->pushMenu('Databases', null, 'fa fa-database', null, $submenu);
+        } else {
+            $builder->pushItem('Sign in' , 'page.login' , 'fa fa-sign-in' , null);
         }
         return $builder->toArray();
     }
