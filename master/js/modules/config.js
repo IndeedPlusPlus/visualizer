@@ -46,7 +46,12 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
           templateUrl: helper.basepath('dbview.html'),
           controller: 'DatabaseViewController'
       })
-      .state('page)
+      .state('app.dbcreate' , {
+          url: '/db-create/',
+          title: 'Database Creation',
+          templateUrl: helper.basepath('dbcreate.html'),
+          controller: 'DatabaseCreateController'
+      })
     //
     // CUSTOM RESOLVES
     //   Add your own resolves properties

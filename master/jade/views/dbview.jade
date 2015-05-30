@@ -1,4 +1,33 @@
 h3
     | {{database.name}}
-.row
-    button.btn.btn-danger(ng-click='deleteDatabase()') Delete
+.row(ng-if="database.status == 'ok'")
+    .col-xs-12
+        // START panel
+        .panel.panel-default
+            .panel-heading
+                | Tables
+            .panel-body
+                // START table-responsive
+                .table-responsive(ng-if='database.tables')
+                    table.table.table-striped.table-bordered.table-hover
+                        thead
+                            tr
+                                th #
+                                th Table Name
+                                th Rows
+                                th Creation Time
+                                th Update Time
+                        tbody
+                            tr(ng-repeat='table in database.tables')
+                                td {{ $index + 1}}
+                                td {{ table.Name }}
+                                td {{ table.Rows }}
+                                td {{ table.Create_time }}
+                                td {{ table.Update_time }}
+    .col-xs-12
+        .panel.panel-default
+            .panel-heading
+                | Actions
+            .panel-body
+                a.btn.btn-primary(href='api/web/index.php?r=pma') Administration
+                button.btn.btn-danger(ng-click='deleteDatabase()') Delete

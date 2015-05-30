@@ -44,8 +44,8 @@ App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', f
     // Scope Globals
     // ----------------------------------- 
     $rootScope.app = {
-      name: 'Angle',
-      description: 'Angular Bootstrap Admin Template',
+      name: 'Visualizer',
+      description: 'Simple data visualizer implement.',
       year: ((new Date()).getFullYear()),
       layout: {
         isFixed: true,

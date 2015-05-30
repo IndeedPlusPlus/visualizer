@@ -50,7 +50,7 @@ class DatabaseController extends JSONController
 
         $ret = $mysqli->query('CREATE DATABASE ' . $dbName . ' CHARSET utf8');
         if ($ret) {
-            return ['status' => 'ok'];
+            return ['status' => 'ok', 'name' => $name];
         } else {
             \Yii::$app->response->statusCode = 404;
             return ['status' => 'error', 'error' => $mysqli->error, 'errors' => $mysqli->error_list];
@@ -75,5 +75,20 @@ class DatabaseController extends JSONController
     public function actionShowAll()
     {
         return $this->user->getDatabases();
+    }
+
+    public function actionView($name)
+    {
+        $dbName = $this->dbUser . '_' . $name;
+        $mysqli = new mysqli('localhost', $this->dbUser, $this->user->db_password, $dbName);
+
+        $ret = $mysqli->query('SHOW TABLE STATUS');
+        if ($ret) {
+            $tables = $ret->fetch_all(MYSQL_ASSOC);
+            return ['status' => 'ok', 'name' => $name, 'tables' => $tables];
+        } else {
+            \Yii::$app->response->statusCode = 404;
+            return ['status' => 'error', 'error' => $mysqli->error, 'errors' => $mysqli->error_list];
+        }
     }
 }
