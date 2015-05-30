@@ -8,7 +8,7 @@
       p.text-center.pv SIGN IN TO CONTINUE.
       form.form-validate(role='form', ng-submit="login()", name='loginForm', novalidate='').mb-lg
         .form-group.has-feedback
-          input#exampleInputEmail1.form-control(type='email', name="account_email" placeholder='Enter email', autocomplete="off", ng-model="account.email", required='')
+          input#exampleInputEmail1.form-control(type='text', name="account_email" placeholder='Enter username', autocomplete="off", ng-model="account.name", required='')
           span.fa.fa-envelope.form-control-feedback.text-muted
           span.text-danger(ng-show="loginForm.account_email.$dirty && loginForm.account_email.$error.required") This field is required
           span.text-danger(ng-show="loginForm.account_email.$dirty && loginForm.account_email.$error.email") This field must be a valid email address
@@ -28,8 +28,8 @@
         button.btn.btn-block.btn-primary.mt-lg(type='submit') Login
       
       .alert.alert-danger.text-center(ng-show='authMsg') {{authMsg}}
-      p.pt-lg.text-center Need to Signup?
-      a(ui-sref="page.register").btn.btn-block.btn-default Register Now
+      //p.pt-lg.text-center Need to Signup?
+      //a(ui-sref="page.register").btn.btn-block.btn-default Register Now
   // END panel
   .p-lg.text-center
     span &copy; 
