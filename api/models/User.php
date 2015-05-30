@@ -89,4 +89,19 @@ class User extends ActiveRecord implements IdentityInterface
         }
         return $ret;
     }
+
+    public function getDatabaseUser()
+    {
+        return \Yii::$app->params['databasePrefix'] . $this->name;
+    }
+
+    public function mapDatabaseName($databaseName)
+    {
+        return $this->getDatabaseUser() . '_' . $databaseName;
+    }
+
+    public function getCharts()
+    {
+        return $this->hasMany(Chart::className(), ['owner_id' => 'id']);
+    }
 }
