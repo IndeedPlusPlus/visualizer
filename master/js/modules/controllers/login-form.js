@@ -30,8 +30,12 @@ App.controller('LoginFormController', ['$scope', '$http', '$state', '$rootScope'
                         $rootScope.refreshSidebar();
                         $state.go('app.singleview');
                     }
-                }, function (x) {
+                }, function (response) {
                     $scope.authMsg = 'Server Request Error';
+                    if (response.data.errors.username)
+                        $scope.authMsg = 'User not found.';
+                    if (response.data.errors.password)
+                        $scope.authMsg = 'Incorrect password.';
                 });
         }
         else {
