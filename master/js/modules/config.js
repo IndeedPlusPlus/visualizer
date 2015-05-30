@@ -46,6 +46,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
           templateUrl: helper.basepath('dbview.html'),
           controller: 'DatabaseViewController'
       })
+      .state('page)
     //
     // CUSTOM RESOLVES
     //   Add your own resolves properties
