@@ -8,7 +8,6 @@ use app\models\User;
 use app\models\UserLoginForm;
 use Yii;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Json;
 use yii\web\ForbiddenHttpException;
 
 class SiteController extends JSONController
@@ -31,7 +30,7 @@ class SiteController extends JSONController
     {
         $form = new UserLoginForm();
 
-        $data = Json::decode(file_get_contents('php://input'));
+        $data = $this->postData;
         if (isset($data['username']))
             $form->username = $data['username'];
         if (isset($data['password']))
@@ -40,7 +39,7 @@ class SiteController extends JSONController
             $form->remember_me = $data['remember_me'];
 
         if ($form->login()) {
-            return ['status' => 'ok', 'username' => $form->getUser()->name ];
+            return ['status' => 'ok', 'username' => $form->getUser()->name];
         } else {
             Yii::$app->response->statusCode = 403;
             return ['status' => 'error', 'errors' => $form->getErrors()];
@@ -76,7 +75,7 @@ class SiteController extends JSONController
             }
             $builder->pushMenu('Databases', null, 'fa fa-database', null, $submenu);
         } else {
-            $builder->pushItem('Sign in' , 'page.login' , 'fa fa-sign-in' , null);
+            $builder->pushItem('Sign in', 'page.login', 'fa fa-sign-in', null);
         }
         return $builder->toArray();
     }
