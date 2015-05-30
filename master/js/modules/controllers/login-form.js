@@ -27,7 +27,6 @@ App.controller('LoginFormController', ['$scope', '$http', '$state', '$rootScope'
                     if (!response.data.username) {
                         $scope.authMsg = 'Incorrect credentials.';
                     } else {
-                        $rootScope.refreshSidebar();
                         $state.go('app.singleview');
                     }
                 }, function (response) {
