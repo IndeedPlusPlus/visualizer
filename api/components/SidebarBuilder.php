@@ -42,7 +42,7 @@ class SidebarBuilder
     public function pushHeader()
     {
         $this->pushItem('Menu', null, null, 'sidebar.heading.HEADER', true);
-        $this->pushItem('Single View', 'app.singleview', 'fa fa-file-o', 'sidebar.nav.SINGLEVIEW');
+        $this->pushItem('Welcome', 'app.singleview', 'fa fa-file-o', 'sidebar.nav.SINGLEVIEW');
         $this->pushItem('Administration', 'app.administration', 'fa fa-gears', 'sidebar.nav.ADMINISTRATION');
     }
 
