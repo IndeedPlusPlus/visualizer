@@ -154,6 +154,10 @@ App
             template: 'app/views/charts/flot-bar.html',
             controller: 'ChartFlotBarController'
         },
+        'flot-line' : {
+            template: 'app/views/charts/flot-line.html',
+            controller: 'ChartFlotLineController'
+        },
         'flot-pie' : {
             template: 'app/views/charts/flot-pie.html',
             controller: 'ChartFlotPieController'
