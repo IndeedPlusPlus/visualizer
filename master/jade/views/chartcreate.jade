@@ -1,0 +1,36 @@
+h3
+    | Create Chart
+    small Create a new chart under {{database.name}}
+
+.row
+    // START panel
+    .panel.panel-default
+        .panel-heading Create Chart
+        .panel-body
+            form(novalidate).form-horizontal
+                .form-group
+                    label.col-lg-2.control-label Name
+                    .col-lg-10
+                        input.form-control(type='text', ng-model='chart.name', placeholder='name of the new chart', required)
+                .form-group
+                    label.col-sm-2.control-label Template
+                    .col-sm-10
+                        select.form-control(name='template', ng-model='chart.template', required)
+                            option(ng-repeat="template in templates", ng-value='template') {{template}}
+                .form-group
+                    label.col-sm-2.control-label Query
+                    .col-sm-10
+                        input.form-control(type='text' , ng-model='chart.query' , placeholder='SELECT label , value FROM table', required)
+                        span.text-danger(ng-if='query.error') {{query.error}}
+                        span.text-success(ng-if='query.rows')
+                            | Server return {{query.rows}} rows.
+                        span.text-success(ng-if='query.first')
+                            | First row is {{query.first}}
+                .form-group
+                    .col-lg-offset-2.col-lg-10
+                        button.btn.btn-sm.btn-default(ng-click='testQuery(chart.query)') Test Query
+
+                .form-group
+                    .col-lg-offset-2.col-lg-10
+                        button.btn.btn-sm.btn-primary(ng-click='createChart()', ng-disabled='busy || !query.first') Create
+    // END panel

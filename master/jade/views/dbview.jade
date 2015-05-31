@@ -39,9 +39,13 @@ h3
                         tbody
                             tr(ng-repeat='chart in charts')
                                 td {{ $index + 1}}
-                                td: a(ui-sref='app.chart({chartId: {{chart.id}} })'){{ chart.name }}
+                                td: a(ui-sref='app.chart({chartId: {{chart.id}} })') {{ chart.name }}
                                 td {{ chart.template }}
                                 td: code {{ chart.query}}
+            .panel-body
+                button.btn.btn-primary(ui-sref='app.chartcreate({database: \'{{database.name}}\' }) ') Create New Chart
+
+
 .row(ng-if="database.status == 'ok'")
     .col-xs-12
         .panel.panel-default

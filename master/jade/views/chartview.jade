@@ -28,4 +28,4 @@ h3
     .panel.panel-default(ng-if="chart")
         .panel-heading Actions
         .panel-body
-            button.btn.btn-danger Delete
+            button.btn.btn-danger(ng-click='deleteChart()', ng-disabled='busy') Delete
