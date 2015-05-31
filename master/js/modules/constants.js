@@ -165,6 +165,10 @@ App
         'flot-donut': {
             template: 'app/views/charts/flot-donut.html',
             controller: 'ChartFlotDonutController'
+        },
+        'progress': {
+            template: 'app/views/charts/progress.html',
+            controller: 'ChartProgressController'
         }
     })
 ;
