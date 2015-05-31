@@ -157,6 +157,10 @@ App
         'flot-pie' : {
             template: 'app/views/charts/flot-pie.html',
             controller: 'ChartFlotPieController'
+        },
+        'flot-donut': {
+            template: 'app/views/charts/flot-donut.html',
+            controller: 'ChartFlotDonutController'
         }
     })
 ;
