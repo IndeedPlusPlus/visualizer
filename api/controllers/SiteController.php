@@ -74,6 +74,7 @@ class SiteController extends JSONController
                 ];
             }
             $builder->pushMenu('Databases', null, 'fa fa-database', null, $submenu);
+            $builder->pushItem('Create Database', 'app.dbcreate', 'fa fa-plus-circle', null);
         } else {
             $builder->pushItem('Sign in', 'page.login', 'fa fa-sign-in', null);
         }
