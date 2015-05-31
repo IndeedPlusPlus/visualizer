@@ -57,7 +57,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
           title: 'Chart Display',
           templateUrl: helper.basepath('chartview.html'),
           controller: 'ChartViewController',
-          resolve: helper.resolveFor('flot-chart','flot-chart-plugins')
+          resolve: helper.resolveFor('flot-chart','flot-chart-plugins' ,'classyloader' ,'chartjs')
       })
       .state('app.chartcreate' , {
           'url': '/chart-create/:database',
