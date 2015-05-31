@@ -8,7 +8,10 @@ App.controller('DatabaseViewController', ['$scope', '$rootScope', '$http', '$sta
         .error(function (data) {
             alert(data.error);
         });
-
+    $http.get('api/web/index.php?r=chart/index&database=' + encodeURIComponent($scope.database.name))
+        .success(function (data) {
+            $scope.charts = data;
+        });
     $scope.deleteDatabase = function () {
         $http.get('api/web/index.php?r=database/drop&name=' + encodeURIComponent($scope.database.name)).
             success(function () {

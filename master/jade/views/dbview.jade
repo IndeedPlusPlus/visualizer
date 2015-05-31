@@ -16,14 +16,33 @@ h3
                                 th Table Name
                                 th Rows
                                 th Creation Time
-                                th Update Time
                         tbody
                             tr(ng-repeat='table in database.tables')
                                 td {{ $index + 1}}
                                 td {{ table.Name }}
                                 td {{ table.Rows }}
                                 td {{ table.Create_time }}
-                                td {{ table.Update_time }}
+.row(ng-if="charts")
+    .col-xs-12
+        .panel.panel-default
+            .panel-heading
+                | Charts
+            .panel-body
+                .table-responsive
+                    table.table.table-striped.table-bordered.table-hover
+                        thead
+                            tr
+                                th #
+                                th Chart Name
+                                th Template
+                                th Query
+                        tbody
+                            tr(ng-repeat='chart in charts')
+                                td {{ $index + 1}}
+                                td: a(ui-sref='app.chart({chartId: {{chart.id}} })'){{ chart.name }}
+                                td {{ chart.template }}
+                                td: code {{ chart.query}}
+.row(ng-if="database.status == 'ok'")
     .col-xs-12
         .panel.panel-default
             .panel-heading
