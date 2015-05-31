@@ -169,6 +169,10 @@ App
         'progress': {
             template: 'app/views/charts/progress.html',
             controller: 'ChartProgressController'
+        },
+        'chartjs-radar': {
+            template: 'app/views/charts/chartjs-radar.html',
+            controller: 'ChartChartJSRadarController'
         }
     })
 ;
