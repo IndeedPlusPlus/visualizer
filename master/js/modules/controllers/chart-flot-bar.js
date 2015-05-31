@@ -1,5 +1,4 @@
 App.controller('ChartFlotBarController' , ['$scope' , function($scope) {
-    console.log($scope.rawData);
     $scope.barData = [{
         "color": "#9cd159",
         data: $scope.rawData
