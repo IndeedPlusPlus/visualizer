@@ -52,6 +52,13 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
           templateUrl: helper.basepath('dbcreate.html'),
           controller: 'DatabaseCreateController'
       })
+      .state('app.chart' , {
+          url: '/chart/:chartId',
+          title: 'Chart Display',
+          templateUrl: helper.basepath('chartview.html'),
+          controller: 'ChartViewController',
+          resolve: helper.resolveFor('flot-chart','flot-chart-plugins')
+      })
       .state('page', {
           url: '/page',
           templateUrl: 'app/pages/page.html',

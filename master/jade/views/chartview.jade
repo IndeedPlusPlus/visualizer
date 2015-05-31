@@ -1,0 +1,31 @@
+h3
+    | {{chart.name}}
+.row
+    .panel.panel-default(ng-if="rawData")
+        .panel-heading Chart
+        .panel-body(ng-include="templateUrl")
+.row
+    .panel.panel-default(ng-if="chart")
+        .panel-heading Information
+        .panel-body
+            .container-fluid
+                .row
+                    .col-xs-9.col-lg-6
+                        p.mt-sm Name
+                    .col-xs-3.col-lg-6
+                        p {{chart.name}}
+                .row
+                    .col-xs-9.col-lg-6
+                        p.mt-sm Template
+                    .col-xs-3.col-lg-6
+                        p {{chart.template}}
+                .row
+                    .col-xs-9.col-lg-6
+                        p.mt-sm Query
+                    .col-xs-3.col-lg-6
+                        p: code {{chart.query}}
+.row
+    .panel.panel-default(ng-if="chart")
+        .panel-heading Actions
+        .panel-body
+            button.btn.btn-danger Delete

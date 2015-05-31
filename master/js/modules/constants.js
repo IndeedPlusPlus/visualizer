@@ -149,4 +149,10 @@ App
       {name: 'ui.map',                    files: ['vendor/angular-ui-map/ui-map.js']}
     ]
   })
+    .constant('CHART_TEMPLATES' , {
+        'flot-bar' : {
+            template: 'app/views/charts/flot-bar.html',
+            controller: 'ChartFlotBarController'
+        }
+    })
 ;
