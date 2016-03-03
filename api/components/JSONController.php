@@ -16,5 +16,6 @@ class JSONController extends Controller
         $postString = file_get_contents('php://input');
         if ($postString)
             $this->postData = Json::decode($postString);
+        $this->enableCsrfValidation = false;
     }
 }
