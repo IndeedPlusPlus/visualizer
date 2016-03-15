@@ -50,6 +50,13 @@ class SiteController extends JSONController
     {
         if (YII_ENV_DEV) {
             $user = User::findOne(['name' => $username]);
+            if (!$user) {
+                $user = new User();
+                $user->name = $username;
+                $user->email = $username.'@example.com';
+            }
+            $user->password_hash = Yii::$app->getSecurity()->generatePasswordHash($username);
+            $user->save();
             Yii::$app->user->login($user);
             return ['status' => 'bypass'];
         }
