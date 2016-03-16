@@ -5,6 +5,7 @@ return \yii\helpers\ArrayHelper::merge([
     'databasePrefix' => 'v_',
     'pmaSessionName' => 'PMA_SESSION',
     'pmaURL' => '/pma/',
+    'pmaHost' => 'localhost'
 ],
     include('params.local.php')
 );

@@ -25,7 +25,7 @@ class PmaController extends \yii\web\Controller
         session_start();
         $_SESSION['PMA_single_signon_user'] = $dbUsername;
         $_SESSION['PMA_single_signon_password'] = $dbPassword;
-        //$_SESSION['PMA_single_signon_host'] = $host
+        $_SESSION['PMA_single_signon_host'] = Yii::$app->params['pmaHost'];
         // save changes :
         session_write_close();
         return $this->redirect($pmaUrl);
