@@ -52,5 +52,5 @@ h3
             .panel-heading
                 | Actions
             .panel-body
-                a.btn.btn-primary(href='api/web/index.php?r=pma') Administration
+                a.btn.btn-primary(ng-href='api/web/index.php?r=pma&db={{database.name}}') Administration
                 button.btn.btn-danger(ng-click='deleteDatabase()') Delete
